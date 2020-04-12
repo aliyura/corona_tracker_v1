@@ -9,43 +9,68 @@ import 'package:CoronaTracker/google_map_base.dart';
 import 'package:CoronaTracker/stats.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Corona Virus Tracker',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text('Corona Virus Tracker'),
-            bottom: TabBar(
-              tabs: <Widget>[
-                Tab(
-                  text: "Tracker",
-                ),
-                Tab(
-                  text: "Map Stats",
-                ),
-                Tab(
-                  text: "Advices",
-                ),
-              ],
-            ),
+        title: 'Corona Virus Tracker',
+        theme: ThemeData(
+          primarySwatch: AppTheme.background,
+        ),
+        home: MyApp());
+  }
+}
+
+class MyApp extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 3, // Added
+      initialIndex: 0, //Added
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Corona Virus Tracker'),
+          bottom: TabBar(
+            tabs: <Widget>[
+              Tab(
+                text: "Tracker",
+              ),
+              Tab(
+                text: "Map Stats",
+              ),
+              Tab(
+                text: "Advices",
+              ),
+            ],
           ),
-          drawer: Drawer(
+        ),
+        drawer: Drawer(
           child: ListView(
             children: <Widget>[
-             
+              Align(
+                alignment: Alignment.topCenter,
+                child: UserAccountsDrawerHeader(
+                  accountName: Text('Corona Tracker v0.0.1'),
+                  accountEmail: Text('info@coronatracker.com'),
+                  currentAccountPicture: GestureDetector(
+                    child: CircleAvatar(
+                      backgroundColor: AppTheme.nearlyBlack.withOpacity(0.5),
+                      child: Icon(
+                        Icons.person,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  decoration: BoxDecoration(color: AppTheme.background),
+                ),
+              ),
               InkWell(
                   onTap: () {
-                    
+                    Navigator.pop(context);
                   },
                   child: ListTile(
                     title: Text('Home'),
@@ -62,7 +87,6 @@ class MyApp extends StatelessWidget {
                   )),
               InkWell(
                   onTap: () {
-                    
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -74,7 +98,6 @@ class MyApp extends StatelessWidget {
                   )),
               InkWell(
                   onTap: () {
-                    
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -86,7 +109,6 @@ class MyApp extends StatelessWidget {
                   )),
               InkWell(
                   onTap: () {
-                    
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -99,17 +121,15 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
-          body: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
-            children: <Widget>[
-              StatsPage(),
-              BaseGoogleMap().getWidget(),
-              AdvicesPage(),
-            ],
-          ),
+        body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            StatsPage(),
+            BaseGoogleMap().getWidget(),
+            AdvicesPage(),
+          ],
         ),
       ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
