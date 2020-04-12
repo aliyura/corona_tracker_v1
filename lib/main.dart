@@ -17,15 +17,19 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: 'Corona Virus Tracker',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: AppTheme.background,
+          primaryColor: AppTheme.background,
+          cursorColor: AppTheme.background,
+          pageTransitionsTheme: PageTransitionsTheme(builders: {
+            TargetPlatform.android: CupertinoPageTransitionsBuilder(),
+          }),
         ),
         home: MyApp());
   }
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -47,6 +51,20 @@ class MyApp extends StatelessWidget {
               ),
             ],
           ),
+          actions: <Widget>[
+            FlatButton.icon(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FeedbackScreen()));
+              },
+              icon: Icon(
+                Icons.comment,
+                size: 16,
+              ),
+              label: Text("Feedback"),
+              textColor: AppTheme.white,
+            )
+          ],
         ),
         drawer: Drawer(
           child: ListView(
@@ -78,6 +96,7 @@ class MyApp extends StatelessWidget {
                   )),
               InkWell(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => AboutScreen()));
                   },
@@ -87,6 +106,7 @@ class MyApp extends StatelessWidget {
                   )),
               InkWell(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -98,6 +118,7 @@ class MyApp extends StatelessWidget {
                   )),
               InkWell(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -109,6 +130,7 @@ class MyApp extends StatelessWidget {
                   )),
               InkWell(
                   onTap: () {
+                    Navigator.pop(context);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
