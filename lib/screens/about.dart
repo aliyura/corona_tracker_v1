@@ -34,7 +34,7 @@ class _AboutScreenState extends State<AboutScreen> {
                       top: MediaQuery.of(context).padding.top,
                       left: 16,
                       right: 16),
-                  child: Image.asset('assets/images/helpImage.png'),
+                  child: Image.asset('Assets/images/helpImage.png'),
                 ),
                 Container(
                   padding: const EdgeInsets.only(top: 8),

@@ -40,7 +40,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           top: MediaQuery.of(context).padding.top,
                           left: 16,
                           right: 16),
-                      child: Image.asset('assets/images/feedbackImage.png'),
+                      child: Image.asset('Assets/images/feedbackImage.png'),
                     ),
                     Container(
                       padding: const EdgeInsets.only(top: 8),
