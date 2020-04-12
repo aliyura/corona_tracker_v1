@@ -260,7 +260,7 @@ class _StatsPage extends State<StatsPage>
           var children = List<Widget>();
 
           final chinaCase = cases.firstWhere(
-              (element) => element.country.toLowerCase().contains('china'));
+              (element) => element.country.toLowerCase().contains('china'),orElse: () => null);
 
           if (chinaCase != null) {
             final data = [

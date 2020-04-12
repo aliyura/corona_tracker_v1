@@ -83,13 +83,21 @@ class _ReateAppScreenState extends State<ReateAppScreen> {
                             child: Center(
                               child: Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text(
-                                  'Rate',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Icon(Icons.thumb_up,color: AppTheme.nearlyWhite,),
+                                     SizedBox(width: 10,),
+                                    Text(
+                                    'Rate App',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.white,
+                                    ),
                                 ),
+                                
+                                ],)
                               ),
                             ),
                           ),

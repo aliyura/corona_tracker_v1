@@ -93,13 +93,23 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                               child: Center(
                                 child: Padding(
                                   padding: const EdgeInsets.all(4.0),
-                                  child: Text(
+                                  child:
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                    Icon(Icons.send,color: AppTheme.nearlyWhite),
+                                    SizedBox(width:5.0),
+                                     Text(
                                     'Send',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white,
                                     ),
                                   ),
+
+                                  
+                                  ],)
                                 ),
                               ),
                             ),
@@ -165,7 +175,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
   }
 
   _launchURL(body) async {
-    String url="mailto:net.rabiualiyu@gmail.com?subject=User feedback from barqr scanner app v0.0.1&body="+body;
+    String url="mailto:net.rabiualiyu@gmail.com?subject=User feedback from Corona Scanner app v0.0.1&body="+body;
     if (await canLaunch(url)) {
       await launch(url);
     } else {

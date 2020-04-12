@@ -34,11 +34,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 3, // Added
+
       initialIndex: 0, //Added
       child: Scaffold(
         appBar: AppBar(
           title: Text('Corona Virus Tracker'),
           bottom: TabBar(
+            indicatorColor: AppTheme.nearlyWhite,
             tabs: <Widget>[
               Tab(
                 text: "Tracker",
